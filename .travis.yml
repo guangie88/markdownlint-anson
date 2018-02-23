@@ -1,0 +1,9 @@
+services:
+  - docker
+script:
+  - docker build -t guangie88/markdownlint-anson .
+after_success:
+  - docker run -it -v $PWD:/app guangie88/markdownlint-anson markdownlint README.md
+branches:
+  only:
+    - master
